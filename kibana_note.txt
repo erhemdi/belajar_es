@@ -1,0 +1,48 @@
+GET _search
+{
+  "query": {
+    "match_all": {}
+  }
+}
+
+
+PUT /users
+{
+  "settings": {
+    "number_of_shards": 2,
+    "number_of_replicas": 2
+  }
+}
+
+DELETE /users
+
+POST /users/_doc/1
+{
+  "name": "user 1",
+  "age": 31
+}
+
+POST /users/_update/1
+{
+  "doc": {
+    "age": 41
+  }
+}
+
+POST /users/_doc/2
+{
+  "name": "user 2",
+  "age": 32
+}
+
+PUT /users/_doc/1
+{
+  "name": "user 1 update",
+  "age": 41
+}
+
+GET /users/_doc/1
+
+DELETE /users/_doc/
+
+GET /users/_search
